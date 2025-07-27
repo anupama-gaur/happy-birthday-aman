@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎂 Happy Birthday Aman! 🎉</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe6f0, #ffe0cc);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      padding: 30px;
+      color: #ff3399;
+    }
+
+    #countdown {
+      font-size: 60px;
+      font-weight: bold;
+    }
+
+    #birthday-message {
+      display: none;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .slideshow-container {
+      display: none;
+      position: relative;
+      max-width: 500px;
+      margin: auto;
+      margin-top: 30px;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    .caption {
+      color: #333;
+      font-size: 20px;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 3px;
+      background-color: #ff99cc;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .active {
+      background-color: #ff3399;
+    }
+
+    #final-message {
+      display: none;
+      font-size: 22px;
+      color: #222;
+      margin-top: 40px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>🎊 Countdown to a Special Surprise! 🎊</h1>
+  <div id="countdown">10</div>
+
+  <div id="birthday-message">
+    <h1>🎉 Happy Birthday Aman! 🎂</h1>
+    <p>You’re not just my best friend — you're my sunshine and support system.
+        <br>No matter how life changes or how far apart we drift, I still remember the good times we shared. Wishing you all the best today and always.  
+    <br>Let’s celebrate all the love and memories! ❤️</p>
+  </div>
+
+  <!-- Slideshow -->
+  <div class="slideshow-container" id="slideshow">
+
+    <div class="mySlides">
+      <img src="4.jpeg" alt="Slide 1">
+      <div class="caption">A little older, a lot more legendary! 😄</div>
+    </div>
+
+    <div class="mySlides">
+      <img src="C:\Users\MSI 1\OneDrive\Documents\Folder\birthday-wishes\1.png" alt="Slide 2">
+      <div class="caption">Shine brighter than the candles 🌟</div>
+    </div>
+
+    <div class="mySlides">
+      <img src="C:\Users\MSI 1\OneDrive\Documents\Folder\birthday-wishes\2.jpeg" alt="Slide 3">
+      <div class="caption">Here’s to another year of being fabulous! 💬</div>
+    </div>
+
+    <div class="mySlides">
+      <img src="C:\Users\MSI 1\OneDrive\Documents\Folder\birthday-wishes\3.jpeg" alt="Slide 4">
+      <div class="caption">Keep calm and birthday on! 🎊</div>
+    </div>
+
+    <div class="mySlides">
+      <img src="C:\Users\MSI 1\OneDrive\Documents\Folder\birthday-wishes\5.jpeg" alt="Slide 5">
+      <div class="caption">Glow up. Show up. Celebrate you.🎂</div>
+    </div>
+
+  </div>
+
+  <br>
+  <div style="display: none;" id="dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <!-- Final Message Page -->
+  <div id="final-message">
+    <h2>🌟 Final Words 🌟</h2>
+    <p>Thank you for being YOU, Aman!  
+    You bring joy, strength, and laughter to every moment we share.  
+    Here's to more memories, more cake, and more love.
+    <br><br>
+    And though I may not be a permanent chapter in your story, but I can assure to be a best temporary person you ever meet." 
+    <br><br>
+    🎂 Happy Birthday once again! 🎁  
+    <br><br>With all my heart,  
+    <br><b>Your Friend 💕</b></p>
+  </div>
+
+  <!-- Birthday Music -->
+  <audio id="birthday-audio" src="C:\Users\MSI 1\OneDrive\Documents\Folder\birthday-wishes\happy-birthday.mp3" preload="auto"></audio>
+
+  <!-- Confetti Script -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <script>
+    let count = 10;
+    const countdownEl = document.getElementById("countdown");
+    const messageEl = document.getElementById("birthday-message");
+    const audioEl = document.getElementById("birthday-audio");
+    const slideshowEl = document.getElementById("slideshow");
+    const dotsEl = document.getElementById("dots");
+    const finalMessageEl = document.getElementById("final-message");
+
+    const timer = setInterval(() => {
+      countdownEl.textContent = count;
+      count--;
+
+      if (count < 0) {
+        clearInterval(timer);
+        countdownEl.style.display = "none";
+        messageEl.style.display = "block";
+        slideshowEl.style.display = "block";
+        dotsEl.style.display = "block";
+        audioEl.play();
+        launchConfetti();
+        showSlides();
+      }
+    }, 1000);
+
+    function launchConfetti() {
+      confetti({
+        particleCount: 300,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    }
+
+    // Slideshow logic
+    let slideIndex = 0;
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        // End of slideshow – show final message
+        slideshowEl.style.display = "none";
+        dotsEl.style.display = "none";
+        finalMessageEl.style.display = "block";
+        return;
+      }    
+
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+
+      slides[slideIndex - 1].style.display = "block";  
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, 3000); // 3s per slide
+    }
+  </script>
+
+</body>
+</html>
